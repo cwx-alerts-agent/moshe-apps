@@ -1,0 +1,86 @@
+<!doctype html><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
+<title>Zmanim - Moshe's Apps</title>
+<meta name=description content="Every zman for your exact spot, worked out on your phone. No internet needed.">
+<link rel=icon href="a/icon.svg">
+<link rel=stylesheet href=base.css>
+<style>
+body{--ac:#4C6B00;--onac:#FFFFFF}
+.glow{background:radial-gradient(700px 500px at 80% 0%,#E8F7C673,transparent),radial-gradient(500px 400px at 0% 40%,#CBE29859,transparent)}
+.back{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 20px 0 14px;border-radius:22px;background:var(--s2);font-weight:600;font-size:15px}
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:50px;align-items:center;margin-top:34px;border-radius:56px;background:linear-gradient(150deg,#E8F7C6,#CBE298);padding:56px;position:relative;overflow:hidden}
+.hero .ic{width:104px;height:104px;border-radius:34px;box-shadow:0 14px 40px #00000026}
+h1{font-size:92px;font-weight:800;line-height:.95;margin:28px 0 16px;color:#243300}
+.lead{font-size:20px;line-height:1.45;color:#243300cc;max-width:470px}
+.badges{display:flex;gap:10px;margin-top:26px;flex-wrap:wrap}
+.badges span{height:36px;padding:0 16px;border-radius:18px;background:#ffffff73;display:inline-flex;align-items:center;font-size:14px;font-weight:600;color:#243300d8}
+.badges .v{background:var(--ac);color:var(--onac);font-weight:800}
+.dl.big{height:72px;padding:0 38px;font-size:20px;margin-top:34px;box-shadow:0 12px 36px #4C6B0055;gap:14px}
+.dl.big svg{width:28px;height:28px}
+.note{margin-top:16px;color:#24330099;font-size:13.5px}
+.stage{position:relative;height:560px}
+.stage .phone{position:absolute;width:250px}
+.p1{left:2%;top:90px;transform:rotate(-6deg)}
+.p2{left:30%;top:10px;z-index:2;width:270px!important}
+.p3{right:0;top:100px;transform:rotate(6deg)}
+h3.s{font-size:44px;font-weight:700;margin:64px 0 24px}
+.shots{display:flex;gap:18px;overflow-x:auto;margin-right:-40px;padding-bottom:8px}
+.shots .phone{width:260px;flex:none;border-radius:34px}
+.shots .phone:nth-child(2n){margin-top:30px}
+ul.b{list-style:none;display:flex;flex-direction:column;gap:12px;max-width:860px}
+ul.b li{background:var(--s1);border:1px solid var(--line);border-radius:24px;padding:16px 22px;font-size:15.5px;line-height:1.45;color:var(--on)}
+ul.b li::before{content:"";display:inline-block;width:8px;height:8px;border-radius:4px;background:#4C6B00;margin-right:12px;vertical-align:2px}
+.info{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px}
+.tile{background:var(--s1);border:1px solid var(--line);border-radius:32px;padding:24px}
+.tile small{display:block;color:var(--mut);font-size:13px;font-weight:600;margin-bottom:10px}
+.tile b{font-family:'Bricolage Grotesque';font-size:28px;font-weight:700;letter-spacing:-.02em}
+.sha{margin-top:16px;background:var(--s1);border-radius:24px;padding:18px 24px;color:var(--mut);font-size:13px;font-family:monospace;word-break:break-all}
+.sha b{color:var(--on);font-family:Figtree}
+.mnav,.sticky{display:none}
+@media (max-width:700px){
+ .wrap{padding:16px 16px 140px}
+ .back{height:40px;font-size:14px}
+ .hero{display:block;padding:28px 24px 0;border-radius:40px;margin-top:18px}
+ .hero .ic{width:84px;height:84px;border-radius:28px}
+ h1{font-size:56px;margin:20px 0 12px}
+ .lead{font-size:16.5px}
+ .badges span{height:32px;font-size:13px;padding:0 13px}
+ .dl.big{width:100%;height:64px;font-size:18px;margin-top:24px}
+ .note{font-size:12.5px}
+ .stage{height:340px;margin:20px -24px 0;overflow:hidden}
+ .stage .phone{width:150px;border-width:4px;border-radius:24px}
+ .p1{left:-2%;top:70px}.p2{left:30%;top:20px;width:170px!important}.p3{right:-2%;top:70px}
+ h3.s{font-size:30px;margin:40px 4px 18px}
+ .shots{margin:0 -16px;padding:0 16px}
+ .shots .phone{width:200px}
+ .info{grid-template-columns:1fr 1fr;gap:12px}
+ .tile{padding:18px;border-radius:26px!important}.tile b{font-size:22px}
+ .sha{font-size:11px}
+ .mnav{display:flex;position:fixed;left:16px;right:16px;bottom:16px;height:76px;border-radius:38px;background:#fffffff5;align-items:center;justify-content:space-between;padding:0 12px 0 28px;box-shadow:0 4px 20px #2b253622,0 0 0 1px #0000000d;z-index:9}
+ .mnav .t b{display:block;font-family:'Bricolage Grotesque';font-size:19px}.mnav .t span{font-size:12.5px;color:var(--mut)}
+ .mnav .dl{height:52px;padding:0 24px;font-size:15px}
+}
+</style>
+<div class=glow></div>
+<div class=wrap>
+ <div class=top><a class=back href="index.html"><svg class=i viewBox="0 0 24 24"><path d="M20 11H7.8l5.6-5.6L12 4l-8 8 8 8 1.4-1.4L7.8 13H20z"/></svg>All apps</a><div class=sp></div><a class=brand href="index.html"><div class=mark>M</div></a></div>
+ <div class=hero>
+  <div>
+   <span class=ic style="display:block"><img src="a/zmanim.svg" alt="Zmanim icon"></span>
+   <h1 class=disp>Zmanim</h1>
+   <p class=lead>Every zman for your exact spot, worked out on your phone. No internet needed.</p>
+   <div class=badges><span class=v>v0.1.6</span><span>3.9 MB</span><span>Android 10+</span></div>
+   <a class="dl big" href="apks/Zmanim-0.1.6.apk" download><svg class="i" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg> Download APK</a>
+   <div class=note>Installs over earlier versions. Android may ask you to allow installs once.</div>
+   
+  </div>
+  <div class=stage><div class="phone p1"><img src="shots/zmanim/2-shabbos.webp" alt=""></div><div class="phone p2"><img src="shots/zmanim/1-today.webp" alt=""></div><div class="phone p3"><img src="shots/zmanim/4-countdown.webp" alt=""></div></div>
+ </div>
+ <h3 class="s disp">See it in action</h3>
+ <div class=shots><div class=phone><img src="shots/zmanim/1-today.webp" loading=lazy alt=""></div><div class=phone><img src="shots/zmanim/2-shabbos.webp" loading=lazy alt=""></div><div class=phone><img src="shots/zmanim/3-calendar.webp" loading=lazy alt=""></div><div class=phone><img src="shots/zmanim/4-countdown.webp" loading=lazy alt=""></div></div>
+ <h3 class="s disp">What&#x27;s inside</h3>
+ <ul class=b><li>New in 0.1.6: new Erev Shabbos and Erev Yom Tov card under the countdown</li><li>No internet needed: every zman is worked out on your phone</li><li>Tap any zman for a live countdown, reminders and a lock-screen countdown</li><li>One tap to match the Williamsburg, Boro Park, Flatbush, Monsey, KJ or Lakewood luach</li><li>Shabbos mode keeps everything silent from candle lighting until Shabbos ends</li></ul>
+ <h3 class="s disp">Details</h3>
+ <div class=info><div class=tile><small>Version</small><b>0.1.6</b></div><div class=tile><small>Size</small><b>3.9 MB</b></div><div class=tile><small>Requires</small><b>Android 10+</b></div><div class=tile><small>Updated</small><b>Oct 30, 2026</b></div></div>
+ <div class=sha><b>SHA-256</b>&nbsp; b5df179af7001d0e36169cd94f84054b018c56ee2eaacc72bab7fb90d5fe4a5b</div>
+</div>
+<div class=mnav><div class=t><b>Zmanim</b><span>v0.1.6 · 3.9 MB</span></div><a class=dl href="apks/Zmanim-0.1.6.apk" download><svg class="i" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg> Download</a></div>

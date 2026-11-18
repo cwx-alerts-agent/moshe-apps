@@ -1,0 +1,225 @@
+<!doctype html><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
+<title>Moshe's Apps</title>
+<meta name=description content="Six Android apps built by Moshe. Download the APKs straight from here.">
+<link rel=icon href="a/icon.svg">
+<link rel=stylesheet href=base.css>
+<style>
+.hero{padding:64px 0 40px;display:flex;justify-content:space-between;align-items:flex-end;gap:40px}
+h1{font-size:104px;line-height:.92;font-weight:800;max-width:760px}
+h1 em{font-style:normal;color:#6750A4}
+.hero p{max-width:340px;color:var(--mut);font-size:18px;line-height:1.45;padding-bottom:10px}
+.filters{display:flex;gap:10px;margin-bottom:22px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{position:relative;border-radius:40px;background:var(--bg2);padding:28px;overflow:hidden;display:flex;flex-direction:column;min-height:440px;color:var(--on)}
+.card .head{display:flex;align-items:flex-start;gap:16px}
+.card h2{font-size:30px;font-weight:700;margin:2px 0 6px}
+.card p.d{color:#141218b0;font-size:15.5px;line-height:1.4;max-width:300px;margin-top:14px}
+.card .act{position:absolute;right:24px;top:24px}
+.card .shot{position:absolute;left:28px;right:28px;bottom:-60px;display:flex;gap:16px;justify-content:center}
+.card .shot .phone{width:62%;height:270px}
+.wide{grid-column:span 2;min-height:480px}
+.wide .shot{left:auto;right:28px;width:50%;bottom:-70px}
+.wide .head,.wide h2,.wide p.d,.wide .meta{max-width:45%}
+.wide .shot .phone{width:47%;height:390px}
+.wide .shot .phone+.phone{margin-top:-30px}
+.wide h2{font-size:46px}.wide p.d{font-size:18px}
+.wide .dl{margin-top:28px;align-self:flex-start}
+.wide .meta{margin-top:22px;display:flex;gap:8px}
+.wide .meta span{height:30px;padding:0 13px;border-radius:15px;background:#ffffff66;display:inline-flex;align-items:center;font-size:13px;font-weight:600;color:#141218cc}
+.install{grid-column:span 2;align-items:center;background:var(--s1);border:1px solid var(--line);min-height:auto;border-radius:40px;padding:34px;display:flex;flex-direction:row;gap:30px}
+.install h3{font-size:34px;font-weight:700;margin-bottom:8px;line-height:1}
+.install .steps{display:flex;flex-direction:column;gap:12px;flex:1;justify-content:center}
+.step{background:var(--s2);border-radius:28px;padding:14px 20px;display:flex;align-items:center;gap:16px}
+.step b{display:grid;place-items:center;width:36px;height:36px;border-radius:12px;background:#EADDFF;color:#21005D;flex:none;font-family:'Bricolage Grotesque';font-size:18px}
+.step span{font-size:14.5px;color:var(--mut);line-height:1.4}
+.foot{margin-top:34px;color:var(--mut);font-size:13px;display:flex;justify-content:space-between}
+.mnav,.mtitle{display:none}
+@media (max-width:700px){
+ .wrap{padding:16px 16px 120px}
+ .search,.brand span.t{display:none}
+ .search.force{display:flex;min-width:0;width:100%;margin-bottom:16px}
+ .top .chip{display:none}
+ .hero{padding:26px 4px 22px;display:block}
+ h1{font-size:60px}
+ .hero p{margin-top:14px;font-size:16px;padding:0}
+ .filters{overflow-x:auto;margin:0 -16px 16px;padding:0 16px;scrollbar-width:none}
+ .grid{grid-template-columns:1fr;gap:12px}
+ .card,.wide{grid-column:auto;min-height:0;padding:22px;border-radius:32px}
+ .card .shot{display:none}
+ .card h2{font-size:24px}
+ .card p.d{margin-top:12px;font-size:14.5px;max-width:none}
+ .card .dlm{margin-top:18px;width:100%}
+ .wide{padding-bottom:0}
+ .wide .head,.wide h2,.wide p.d,.wide .meta{max-width:none}
+ .wide .shot{display:flex;position:relative;left:0;right:0;bottom:0;width:100%;margin-top:22px;height:220px;gap:12px;justify-content:center;overflow:hidden}
+ .wide .shot .phone{width:46%;height:380px}
+ .wide .shot .phone+.phone{margin-top:30px}
+ .wide .dl{margin-top:18px;width:100%}
+ .wide h2{font-size:34px}
+ .install{flex-direction:column;border-radius:32px;padding:24px;gap:18px}
+ .install .steps{flex-direction:column}
+ .foot{display:block;margin-top:24px}.foot span{display:block;margin-bottom:6px}
+ .mnav{display:flex;position:fixed;left:16px;right:16px;bottom:16px;height:68px;border-radius:34px;background:#fffffff0;backdrop-filter:blur(20px);align-items:center;justify-content:space-around;box-shadow:0 4px 20px #2b253622,0 0 0 1px #0000000d;z-index:9}
+ .mnav a,.mnav div{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11px;font-weight:600;color:var(--mut);cursor:pointer}
+ .mnav .on{color:#FFFFFF;background:#6750A4;border-radius:28px;padding:10px 24px}
+ .mnav svg{width:24px;height:24px;fill:currentColor}
+}
+</style>
+<div class=glow></div>
+<div class=wrap>
+ <div class=top><div class=brand><div class=mark>M</div><span class=t>Moshe's Apps</span></div><div class=sp></div><label class=search id=sbox><svg class=i viewBox="0 0 24 24"><path d="M15.5 14h-.8l-.3-.3A6.5 6.5 0 1 0 14 15.5l.3.3v.8l5 5 1.5-1.5-5-5zm-6 0a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z"/></svg><input id=q type=search placeholder="Search apps" aria-label="Search apps"></label><span class="chip on" style="display:inline-flex">Android</span></div>
+ <div class=hero><h1 class=disp>Apps I<br><em>built</em> for<br>Android.</h1><p>Fifteen apps, one place. Download the APK straight from here and install. No Play Store needed.</p></div>
+ <div class=filters id=filters><button class="chip on" data-f="all">All 15</button><button class=chip data-f="Weather">Weather</button><button class=chip data-f="Driving">Driving</button><button class=chip data-f="Messaging">Messaging</button><button class=chip data-f="Music">Music</button><button class=chip data-f="Photos & Video">Photos & Video</button><button class=chip data-f="Home">Home</button><button class=chip data-f="Jewish">Jewish</button><button class=chip data-f="Tools">Tools</button></div>
+ <div class=grid id=grid>
+  <div class="card wide shape1" data-cat="Weather" data-name="cwx weather" data-desc="live weather alerts and your town&#x27;s snow and rain call. radar, lightning and shabbos times." style="--bg2:#D8E6FF;--ac:#0B57D0;--onac:#FFFFFF">
+   <a class="cardlink head" href="cwx.html"><span class=ic><img src="a/cwx.svg" alt="CWX Weather icon"></span><div><span class=ver>v4.4.9</span></div></a>
+   <a class=cardlink href="cwx.html"><h2 class=disp>CWX Weather</h2></a>
+   <p class=d>Live weather alerts and your town&#x27;s snow and rain call. Radar, lightning and Shabbos times.</p>
+   <div class=meta><span>Weather alerts</span><span>4.7 MB</span></div>
+   <a class=dl href="apks/CWX-Weather-4.4.9.apk" download><svg class="i" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg> Download APK</a>
+   <a class="shot" href="cwx.html"><div class=phone><img src="shots/cwx/2-community-dark.webp" loading=lazy alt=""></div><div class=phone><img src="shots/cwx/4-storm-center-dark.webp" loading=lazy alt=""></div></a>
+   <div class=mrow></div>
+  </div>
+  <div class="card shape2" data-cat="Driving" data-name="lookout" data-desc="speed and red light camera alerts as you drive" style="--bg2:#C6F0E8;--ac:#006B5F;--onac:#FFFFFF">
+   <a class="cardlink head" href="lookout.html"><span class=ic><img src="a/lookout.svg" alt="Lookout icon"></span><div style="padding-top:2px"><span class=ver>v2.0.6</span></div></a>
+   <a class=cardlink href="lookout.html"><h2 class=disp>Lookout</h2></a>
+   <p class=d>Speed and red light camera alerts as you drive</p>
+   <a class="dl dlm" style="margin-top:20px;align-self:flex-start" href="apks/Lookout-2.0.6.apk" download><svg class="i" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg> Download APK</a>
+   <a class=shot href="lookout.html"><div class=phone style="width:58%;height:210px"><img src="shots/lookout/lk.webp" loading=lazy alt=""></div></a>
+   <div class=mrow></div>
+  </div>
+  <div class="card " data-cat="Messaging" data-name="dispatch" data-desc="scheduled messages to whatsapp groups and more" style="--bg2:#E2E0FF;--ac:#4B46B8;--onac:#FFFFFF">
+   <a class="cardlink head" href="dispatch.html"><span class=ic><img src="a/dispatch.svg" alt="Dispatch icon"></span><div style="padding-top:2px"><span class=ver>v2.0.3</span></div></a>
+   <a class=cardlink href="dispatch.html"><h2 class=disp>Dispatch</h2></a>
+   <p class=d>Scheduled messages to WhatsApp groups and more</p>
+   <a class="dl dlm" style="margin-top:20px;align-self:flex-start" href="apks/Dispatch-2.0.3.apk" download><svg class="i" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg> Download APK</a>
+   <a class=shot href="dispatch.html"><div class=phone style="width:58%;height:210px"><img src="shots/dispatch/dp.webp" loading=lazy alt=""></div></a>
+   <div class=mrow></div>
+  </div>
+  <div class="card " data-cat="Music" data-name="nigun" data-desc="know every song you hear" style="--bg2:#FFE0B8;--ac:#8A4E00;--onac:#FFFFFF">
+   <a class="cardlink head" href="nigun.html"><span class=ic><img src="a/nigun.svg" alt="Nigun icon"></span><div style="padding-top:2px"><span class=ver>v1.0.6</span></div></a>
+   <a class=cardlink href="nigun.html"><h2 class=disp>Nigun</h2></a>
+   <p class=d>Know every song you hear</p>
+   <a class="dl dlm" style="margin-top:20px;align-self:flex-start" href="apks/Nigun-1.0.6.apk" download><svg class="i" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg> Download APK</a>
+   <a class=shot href="nigun.html"><div class=phone style="width:58%;height:210px"><img src="shots/nigun/ng.jpg" loading=lazy alt=""></div></a>
+   <div class=mrow></div>
+  </div>
+  <div class="card shape1" data-cat="Tools" data-name="sayso" data-desc="reply ideas and phrase fill-in as you type" style="--bg2:#DBE1FF;--ac:#4355B9;--onac:#FFFFFF">
+   <a class="cardlink head" href="sayso.html"><span class=ic><img src="a/sayso.svg" alt="Sayso icon"></span><div style="padding-top:2px"><span class=ver>v1.1.3</span></div></a>
+   <a class=cardlink href="sayso.html"><h2 class=disp>Sayso</h2></a>
+   <p class=d>Reply ideas and phrase fill-in as you type</p>
+   <a class="dl dlm" style="margin-top:20px;align-self:flex-start" href="apks/Sayso-1.1.3.apk" download><svg class="i" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg> Download APK</a>
+   <a class=shot href="sayso.html"><div class=phone style="width:58%;height:210px"><img src="shots/sayso/sy.webp" loading=lazy alt=""></div></a>
+   <div class=mrow></div>
+  </div>
+  <div class="card " data-cat="Messaging" data-name="status saver" data-desc="saves whatsapp business “save me” requests to contacts" style="--bg2:#F0DAFF;--ac:#7C3AA8;--onac:#FFFFFF">
+   <a class="cardlink head" href="status.html"><span class=ic><img src="a/status.svg" alt="Status Saver icon"></span><div style="padding-top:2px"><span class=ver>v1.1.2</span></div></a>
+   <a class=cardlink href="status.html"><h2 class=disp>Status Saver</h2></a>
+   <p class=d>Saves WhatsApp Business “save me” requests to contacts</p>
+   <a class="dl dlm" style="margin-top:20px;align-self:flex-start" href="apks/StatusSaver-1.1.2.apk" download><svg class="i" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg> Download APK</a>
+   <a class=shot href="status.html"><div class=phone style="width:58%;height:210px"><img src="shots/status/st.webp" loading=lazy alt=""></div></a>
+   <div class=mrow></div>
+  </div>
+  <div class="card shape2" data-cat="Home" data-name="juice" data-desc="live battery for your phone and your galaxy watch" style="--bg2:#FFF3C2;--ac:#7A5D00;--onac:#FFFFFF">
+   <a class="cardlink head" href="juice.html"><span class=ic><img src="a/juice.svg" alt="Juice icon"></span><div style="padding-top:2px"><span class=ver>v1.2.3</span></div></a>
+   <a class=cardlink href="juice.html"><h2 class=disp>Juice</h2></a>
+   <p class=d>Live battery for your phone and your Galaxy Watch</p>
+   <a class="dl dlm" style="margin-top:20px;align-self:flex-start" href="apks/Juice-1.2.3.apk" download><svg class="i" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg> Download APK</a>
+   <a class=shot href="juice.html"><div class=phone style="width:58%;height:210px"><img src="shots/juice/1-now.webp" loading=lazy alt=""></div></a>
+   <div class=mrow></div>
+  </div>
+  <div class="card " data-cat="Jewish" data-name="zmanim" data-desc="every zman for your exact spot, worked out on your phone" style="--bg2:#E4F5C0;--ac:#4C6B00;--onac:#FFFFFF">
+   <a class="cardlink head" href="zmanim.html"><span class=ic><img src="a/zmanim.svg" alt="Zmanim icon"></span><div style="padding-top:2px"><span class=ver>v0.1.6</span></div></a>
+   <a class=cardlink href="zmanim.html"><h2 class=disp>Zmanim</h2></a>
+   <p class=d>Every zman for your exact spot, worked out on your phone</p>
+   <a class="dl dlm" style="margin-top:20px;align-self:flex-start" href="apks/Zmanim-0.1.6.apk" download><svg class="i" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg> Download APK</a>
+   <a class=shot href="zmanim.html"><div class=phone style="width:58%;height:210px"><img src="shots/zmanim/1-today.webp" loading=lazy alt=""></div></a>
+   <div class=mrow></div>
+  </div>
+  <div class="card shape1" data-cat="Home" data-name="climate" data-desc="your daikin ac (dkn cloud na) in a fast, clean app" style="--bg2:#D9E7FF;--ac:#2B4C9A;--onac:#FFFFFF">
+   <a class="cardlink head" href="climate.html"><span class=ic><img src="a/climate.svg" alt="Climate icon"></span><div style="padding-top:2px"><span class=ver>v2.1</span></div></a>
+   <a class=cardlink href="climate.html"><h2 class=disp>Climate</h2></a>
+   <p class=d>Your Daikin AC (DKN Cloud NA) in a fast, clean app</p>
+   <a class="dl dlm" style="margin-top:20px;align-self:flex-start" href="apks/Climate-2.1.apk" download><svg class="i" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg> Download APK</a>
+   <a class=shot href="climate.html"><div class=phone style="width:58%;height:210px"><img src="shots/climate/1-home.webp" loading=lazy alt=""></div></a>
+   <div class=mrow></div>
+  </div>
+  <div class="card " data-cat="Tools" data-name="tower" data-desc="live air traffic radar" style="--bg2:#C9E9F6;--ac:#00687D;--onac:#FFFFFF">
+   <a class="cardlink head" href="tower.html"><span class=ic><img src="a/tower.svg" alt="Tower icon"></span><div style="padding-top:2px"><span class=ver>v0.2.5</span></div></a>
+   <a class=cardlink href="tower.html"><h2 class=disp>Tower</h2></a>
+   <p class=d>Live air traffic radar</p>
+   <a class="dl dlm" style="margin-top:20px;align-self:flex-start" href="apks/Tower-0.2.5.apk" download><svg class="i" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg> Download APK</a>
+   <a class=shot href="tower.html"><div class=phone style="width:58%;height:210px"><img src="shots/tower/1-radar.webp" loading=lazy alt=""></div></a>
+   <div class=mrow></div>
+  </div>
+  <div class="card shape2" data-cat="Photos & Video" data-name="clipwise" data-desc="simple video, photo and collage editor" style="--bg2:#FFDCE9;--ac:#8E2A52;--onac:#FFFFFF">
+   <a class="cardlink head" href="clipwise.html"><span class=ic><img src="a/clipwise.svg" alt="Clipwise icon"></span><div style="padding-top:2px"><span class=ver>v0.3.0</span></div></a>
+   <a class=cardlink href="clipwise.html"><h2 class=disp>Clipwise</h2></a>
+   <p class=d>Simple video, photo and collage editor</p>
+   <a class="dl dlm" style="margin-top:20px;align-self:flex-start" href="apks/Clipwise-0.3.0.apk" download><svg class="i" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg> Download APK</a>
+   <a class=shot href="clipwise.html"><div class=phone style="width:58%;height:210px"><img src="shots/clipwise/home.webp" loading=lazy alt=""></div></a>
+   <div class=mrow></div>
+  </div>
+  <div class="card " data-cat="Messaging" data-name="quick chat" data-desc="a fast telegram app that sits beside the official one" style="--bg2:#CBE6FF;--ac:#00639E;--onac:#FFFFFF">
+   <a class="cardlink head" href="quickchat.html"><span class=ic><img src="a/quickchat.png" alt="Quick Chat icon"></span><div style="padding-top:2px"><span class=ver>v0.4.4</span></div></a>
+   <a class=cardlink href="quickchat.html"><h2 class=disp>Quick Chat</h2></a>
+   <p class=d>A fast Telegram app that sits beside the official one</p>
+   <a class="dl dlm" style="margin-top:20px;align-self:flex-start" href="apks/QuickChat-0.4.4.apk" download><svg class="i" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg> Download APK</a>
+   <a class=shot href="quickchat.html"><div class=phone style="width:58%;height:210px"><img src="shots/quickchat/1-chats.webp" loading=lazy alt=""></div></a>
+   <div class=mrow></div>
+  </div>
+  <div class="card " data-cat="Photos & Video" data-name="grab" data-desc="save videos and audio from links" style="--bg2:#FFDAD4;--ac:#9C3D33;--onac:#FFFFFF">
+   <a class="cardlink head" href="grab.html"><span class=ic><img src="a/grab.svg" alt="Grab icon"></span><div style="padding-top:2px"><span class=ver>v0.2.7</span></div></a>
+   <a class=cardlink href="grab.html"><h2 class=disp>Grab</h2></a>
+   <p class=d>Save videos and audio from links</p>
+   <a class="dl dlm" style="margin-top:20px;align-self:flex-start" href="apks/Grab-0.2.7.apk" download><svg class="i" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg> Download APK</a>
+   <a class=shot href="grab.html"><div class=phone style="width:58%;height:210px"><img src="shots/grab/1-home.webp" loading=lazy alt=""></div></a>
+   <div class=mrow></div>
+  </div>
+  <div class="card shape1" data-cat="Music" data-name="segue" data-desc="open any music link in your favorite app, instantly" style="--bg2:#D2F7D6;--ac:#0D6B30;--onac:#FFFFFF">
+   <a class="cardlink head" href="segue.html"><span class=ic><img src="a/segue.svg" alt="Segue icon"></span><div style="padding-top:2px"><span class=ver>v0.2</span></div></a>
+   <a class=cardlink href="segue.html"><h2 class=disp>Segue</h2></a>
+   <p class=d>Open any music link in your favorite app, instantly</p>
+   <a class="dl dlm" style="margin-top:20px;align-self:flex-start" href="apks/Segue-0.2.apk" download><svg class="i" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg> Download APK</a>
+   <a class=shot href="segue.html"><div class=phone style="width:58%;height:210px"><img src="shots/segue/home.jpg" loading=lazy alt=""></div></a>
+   <div class=mrow></div>
+  </div>
+  <div class="card " data-cat="Jewish" data-name="ta'am" data-desc="30,000+ kosher recipes, searched the way you talk" style="--bg2:#FFE9E0;--ac:#8C3A0E;--onac:#FFFFFF">
+   <a class="cardlink head" href="taam.html"><span class=ic><img src="a/taam.svg" alt="Ta'am icon"></span><div style="padding-top:2px"><span class=ver>v0.2.3</span></div></a>
+   <a class=cardlink href="taam.html"><h2 class=disp>Ta'am</h2></a>
+   <p class=d>30,000+ kosher recipes, searched the way you talk</p>
+   <a class="dl dlm" style="margin-top:20px;align-self:flex-start" href="apks/Taam-0.2.3.apk" download><svg class="i" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg> Download APK</a>
+   <a class=shot href="taam.html"><div class=phone style="width:58%;height:210px"><img src="shots/taam/shot-home.jpg" loading=lazy alt=""></div></a>
+   <div class=mrow></div>
+  </div>
+  <div class="card install" id=install><div style="max-width:250px"><h3 class=disp>Install in 3 taps</h3><span style="color:var(--mut);font-size:14.5px;line-height:1.4;display:block;margin-top:10px">Android asks once to allow installs from your browser.</span></div>
+   <div class=steps><div class=step><b>1</b><span>Tap Download on any app.</span></div><div class=step><b>2</b><span>Open the APK and allow installs when asked.</span></div><div class=step><b>3</b><span>Tap Install. Updates install over the old version.</span></div></div></div>
+  <div class=empty id=empty>No apps match that search.</div>
+ </div>
+ <div class=foot><span>Moshe's Apps</span><span>APKs are hosted on this site</span></div>
+</div>
+<div class=mnav><div class=on><svg viewBox="0 0 24 24"><path d="M4 4h7v7H4zm9 0h7v7h-7zM4 13h7v7H4zm9 0h7v7h-7z"/></svg>Apps</div><div id=msearch><svg viewBox="0 0 24 24"><path d="M15.5 14h-.8l-.3-.3A6.5 6.5 0 1 0 14 15.5l.3.3v.8l5 5 1.5-1.5-5-5zm-6 0a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z"/></svg>Search</div><a href="#install"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-6h2zm0-8h-2V7h2z"/></svg>Install</a></div>
+<script>
+(function(){
+ var q=document.getElementById('q'),grid=document.getElementById('grid'),empty=document.getElementById('empty');
+ var cards=[].slice.call(grid.querySelectorAll('.card[data-cat]'));
+ var chips=[].slice.call(document.querySelectorAll('#filters .chip'));
+ var f='all';
+ function apply(){
+  var s=(q.value||'').trim().toLowerCase(),n=0;
+  cards.forEach(function(c){
+   var ok=(f==='all'||c.dataset.cat===f)&&(!s||(c.dataset.name+' '+c.dataset.desc).indexOf(s)>-1);
+   c.classList.toggle('hide',!ok);if(ok)n++;
+  });
+  chips[0].textContent='All 15';
+  empty.style.display=n?'none':'block';
+ }
+ q.addEventListener('input',apply);
+ chips.forEach(function(ch){ch.addEventListener('click',function(){
+  chips.forEach(function(c){c.classList.remove('on')});ch.classList.add('on');f=ch.dataset.f;apply();
+ });});
+ document.getElementById('msearch').addEventListener('click',function(){
+  var b=document.getElementById('sbox');b.classList.add('force');window.scrollTo({top:0,behavior:'smooth'});setTimeout(function(){q.focus()},350);
+ });
+})();
+</script>
